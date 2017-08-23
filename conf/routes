@@ -1,0 +1,188 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+#Routes HecBill aplication
+#       Endpoints para Entidad Partner
+GET		/partner/:id				controllers.Partner.findById(id:Integer) 
+POST	/partner					controllers.Partner.create()
+PUT		/partner/:id				controllers.Partner.update(id:Integer)
+DELETE	/partner/:id				controllers.Partner.delete(id:Integer)
+GET     /partner                    controllers.Partner.findAll(index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/parent/:id         controllers.Partner.findByParent(id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET 	/partner/phone/:phone		controllers.Partner.findByPhone(phone:String)
+GET     /partner/city/:id         	controllers.Partner.findByCity(id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET 	/partner/name/:name			controllers.Partner.findByName(name:String)
+GET 	/partner/email/:email		controllers.Partner.findByEmail(email:String)
+
+#		Endpoints entidad City
+GET		/partner/:id_partner/city/:id					controllers.City.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/city						controllers.City.create(id_partner:Integer)
+PUT		/partner/:id_partner/city/:id					controllers.City.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/city/:id					controllers.City.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/city/country/:id       	controllers.City.findByCountry(id_partner:Integer,id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/city                   	controllers.City.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+# 		Endpoints para entidad Country
+GET		/partner/:id_partner/country/:id				controllers.Country.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/country					controllers.Country.create(id_partner:Integer)
+PUT		/partner/:id_partner/country/:id				controllers.Country.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/country/:id				controllers.Country.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/country                   	controllers.Country.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para entidad Config
+GET		/partner/:id_partner/config/:id					controllers.Config.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/config						controllers.Config.create(id_partner:Integer)
+PUT		/partner/:id_partner/config/:id					controllers.Config.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/config/:id					controllers.Config.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/config                 	controllers.Config.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/config/key/:key			controllers.Config.findByKey(id_partner:Integer,key:String)
+
+#		Endpoints para entidad CreditCard
+GET		/partner/:id_partner/customer/:id_customer/creditcard/:id					controllers.CreditCard.findById(id_partner:Integer,id_customer:Integer,id:Integer)
+POST	/partner/:id_partner/customer/:id_customer/creditcard						controllers.CreditCard.create(id_partner:Integer,id_customer:Integer)
+PUT		/partner/:id_partner/customer/:id_customer/creditcard/:id					controllers.CreditCard.update(id_partner:Integer,id_customer:Integer,id:Integer)
+DELETE	/partner/:id_partner/customer/:id_customer/creditcard/:id					controllers.CreditCard.delete(id_partner:Integer,id_customer:Integer,id:Integer)
+GET     /partner/:id_partner/creditcard                 							controllers.CreditCard.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/customer/:id_customer/creditcard						controllers.CreditCard.findByCustomer(id_partner:Integer,id_customer:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+# 		Endpoints para entidad HasExtra
+GET		/partner/:id_partner/hasextra/:id				controllers.HasExtraData.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/hasextra					controllers.HasExtraData.create(id_partner:Integer)
+PUT		/partner/:id_partner/hasextra/:id				controllers.HasExtraData.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/hasextra/:id				controllers.HasExtraData.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/hasextra 					controllers.HasExtraData.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para HasPlan
+GET		/partner/:id_partner/hasplan/:id				controllers.HasPlan.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/hasplan					controllers.HasPlan.create(id_partner:Integer)
+PUT		/partner/:id_partner/hasplan/:id				controllers.HasPlan.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/hasplan/:id				controllers.HasPlan.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/hasplan 					controllers.HasPlan.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/hasplan/customer/:id		controllers.HasPlan.findByCustomer(id_partner:Integer,id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/hasplan/status/:id			controllers.HasPlan.findByStatus(id_partner:Integer,id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para customer
+GET		/partner/:id_partner/customers/:id								controllers.Customer.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/customers									controllers.Customer.create(id_partner:Integer)
+PUT		/partner/:id_partner/customers/:id								controllers.Customer.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/customers/:id								controllers.Customer.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/customers 									controllers.Customer.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/customers/partner/:id 						controllers.Customer.findByPartner(id_partner:Integer,id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/customers/status/:id 						controllers.Customer.findByStatus(id_partner:Integer,id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/customers/ident/:ident						controllers.Customer.findByIdentifier(id_partner:Integer,ident:String)
+GET		/partner/:id_partner/customers/phone/:phone						controllers.Customer.findByPhone(id_partner:Integer,phone:String)
+GET		/partner/:id_partner/customers/cont/:cont						controllers.Customer.findByContract(id_partner:Integer,cont:String)
+GET		/partner/:id_partner/customers/email/:em						controllers.Customer.findByEmail(id_partner:Integer,em:String)
+GET		/partner/:id_partner/customers/invoice/:in						controllers.Customer.findByInvoice(id_partner:Integer,in:Integer)
+
+# Endpoints para ExtraData
+GET		/partner/:id_partner/extra/:id					controllers.ExtraData.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/extra						controllers.ExtraData.create(id_partner:Integer)
+PUT		/partner/:id_partner/extra/:id					controllers.ExtraData.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/extra/:id					controllers.ExtraData.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/extra                   	controllers.ExtraData.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+# Endpoints para Frecuency
+GET		/partner/:id_partner/frecuency/:id				controllers.Frecuency.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/frecuency					controllers.Frecuency.create(id_partner:Integer)
+PUT		/partner/:id_partner/frecuency/:id				controllers.Frecuency.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/frecuency/:id				controllers.Frecuency.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/frecuency                  controllers.Frecuency.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/frecuency/partner/:id		controllers.Frecuency.findByPartner(id_partner:Integer,id:Integer)
+
+# Endpoints para InvoiceLine
+GET		/partner/:id_partner/line/:id					controllers.Invoiceline.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/line						controllers.Invoiceline.create(id_partner:Integer)
+PUT		/partner/:id_partner/line/:id					controllers.Invoiceline.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/line/:id					controllers.Invoiceline.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/line                   	controllers.Invoiceline.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/line/invoice/:id 			controllers.Invoiceline.findByInvoice(id_partner:Integer,id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para Plan
+GET		/partner/:id_partner/plan/only/:id							controllers.Plan.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/plan									controllers.Plan.create(id_partner:Integer)
+PUT		/partner/:id_partner/plan/:id								controllers.Plan.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/plan/:id								controllers.Plan.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/plan/all								controllers.Plan.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/plan									controllers.Plan.findByPartner(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/plan/:id								controllers.Plan.findByPlanPartner(id_partner:Integer,id:Integer)
+
+#		Endpoints para Payment
+GET		/partner/:id_partner/payment/only/:id_payment				controllers.Payment.findById(id_partner:Integer,id_payment:Integer)
+POST	/partner/:id_partner/payment								controllers.Payment.create(id_partner:Integer)
+PUT		/partner/:id_partner/payment/:id							controllers.Payment.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/payment/:id							controllers.Payment.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/payment 								controllers.Payment.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/payment/:id_invoice					controllers.Payment.findByInvoice(id_partner:Integer,id_invoice:Integer)
+
+#		Endpoints para entidad Invoice
+GET		/partner/:id_partner/customer/:id_customer/invoice/:id		controllers.Invoice.findById(id_partner:Integer,id_customer:Integer,id:Integer)
+POST	/partner/:id_partner/customer/:id_customer/invoice			controllers.Invoice.create(id_partner:Integer,id_customer:Integer)
+PUT		/partner/:id_partner/customer/:id_customer/invoice/:id		controllers.Invoice.update(id_partner:Integer,id_customer:Integer,id:Integer)
+DELETE	/partner/:id_partner/customer/:id_customer/invoice/:id		controllers.Invoice.delete(id_partner:Integer,id_customer:Integer,id:Integer)
+GET     /partner/:id_partner/invoice                 				controllers.Invoice.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/customer/:id_customer/invoice			controllers.Invoice.findByCustomer(id_partner:Integer,id_customer:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET		/partner/:id_partner/status/:status/invoice					controllers.Invoice.findByCustomer(id_partner:Integer,status:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+
+#		Endpoints para ItemType
+GET		/partner/:id_partner/itemtype/:id								controllers.ItemType.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/itemtype									controllers.ItemType.create(id_partner:Integer)
+PUT		/partner/:id_partner/itemtype/:id								controllers.ItemType.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/itemtype/:id								controllers.ItemType.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/itemtype 									controllers.ItemType.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para Role
+GET		/partner/:id_partner/role/:id								controllers.Role.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/role									controllers.Role.create(id_partner:Integer)
+PUT		/partner/:id_partner/role/:id								controllers.Role.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/role/:id								controllers.Role.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/role 									controllers.Role.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para RouteTag
+GET		/partner/:id_partner/routetag/:id								controllers.RouteTag.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/routetag									controllers.RouteTag.create(id_partner:Integer)
+PUT		/partner/:id_partner/routetag/:id								controllers.RouteTag.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/routetag/:id								controllers.RouteTag.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/routetag 									controllers.RouteTag.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para Route
+GET		/partner/:id_partner/route/:id								controllers.Route.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/route									controllers.Route.create(id_partner:Integer)
+PUT		/partner/:id_partner/route/:id								controllers.Route.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/route/:id								controllers.Route.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/route									controllers.Route.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/route/status/:status					controllers.Route.findByStatus(id_partner:Integer,status:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/route/type/:type						controllers.Route.findByType(id_partner:Integer,type:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para TagRole
+GET		/partner/:id_partner/tagrole/:id								controllers.TagRole.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/tagrole									controllers.TagRole.create(id_partner:Integer)
+PUT		/partner/:id_partner/tagrole/:id								controllers.TagRole.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/tagrole/:id								controllers.TagRole.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/tagrole 									controllers.TagRole.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para Tag
+GET		/partner/:id_partner/tag/:id								controllers.Tag.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/tag									controllers.Tag.create(id_partner:Integer)
+PUT		/partner/:id_partner/tag/:id								controllers.Tag.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/tag/:id								controllers.Tag.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/tag 									controllers.Tag.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+
+#		Endpoints para User 
+GET		/partner/:id_partner/user/:id								controllers.User.findById(id_partner:Integer,id:Integer)
+POST	/partner/:id_partner/user									controllers.User.create(id_partner:Integer)
+PUT		/partner/:id_partner/user/:id								controllers.User.update(id_partner:Integer,id:Integer)
+DELETE	/partner/:id_partner/user/:id								controllers.User.delete(id_partner:Integer,id:Integer)
+GET     /partner/:id_partner/user 									controllers.User.findAll(id_partner:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/user/partner/:id 						controllers.User.findByPartner(id_partner:Integer,id:Integer,index: Integer ?= -1, size: Integer ?= -1)
+GET     /partner/:id_partner/user/role/:role 						controllers.User.findByRole(id_partner:Integer,role:Integer,index: Integer ?= -1, size: Integer ?= -1)
